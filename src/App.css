@@ -1,38 +1,256 @@
-.App {
-  text-align: center;
+.app {
+  width: 100%;
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container-progressbar {
+  height: 40px;
+  width: 500px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  margin: auto;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.progressbar {
+  height: 100%;
+  background-color: rgb(144, 202, 249);
+  transform: skew(-20deg);
+  position: absolute;
+  left: -6px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-left: 20px;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.label {
+  color: #000000;
+  font-size: 24px;
+  margin: auto;
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.driver-card {
+  width: 300px;
+  height: 300px;
+}
+
+.ymaps-2-1-79-balloon__layout {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 300px !important;
+  max-height: 160px !important;
+}
+
+.ymaps-2-1-79-balloon__layout div {
+  width: 150px;
+}
+
+.ymaps-2-1-79-balloon {
+  width: 200px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  border-radius: 4px !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.driver-card {
+  width: 240px;
+  height: 400px;
+}
+
+h3 {
+  margin: 0;
+}
+
+.not-marker {
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: table;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.form-address {
+  height: 100%;
+  gap: 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: fixed;
+  z-index: 1000;
+  padding-right: 0;
+  padding-bottom: 20px;
+  padding-top: 15px;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation-duration: 0.4s;
+  background-color: #fff;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.form-address > div > div:first-child {
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.form-address h3 {
+  margin-bottom: 15px;
+}
+
+.form-address h4 {
+  text-wrap: wrap;
+}
+
+@keyframes closeForm {
+  0% {
+    padding-left: 15px;
+    width: 300px;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 0;
+    display: none;
+    width: 0;
+    padding-left: 0;
+  }
+}
+
+.close {
+  width: 0;
+  animation-name: closeForm;
+}
+
+@keyframes openForm {
+  0% {
+    display: flex;
+    padding-left: 0;
+    width: 50px;
+  }
+  100% {
+    opacity: 1;
+    padding-left: 15px;
+    width: 100%;
+  }
+}
+
+.open {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 20px 0 15px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+  max-width: 300px;
+  animation-name: openForm;
+}
+
+.selects-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+.save-address {
+  height: 50px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.save-address:hover {
+  color: rgba(1, 42, 73, 0.8);
+  background-color: rgba(9, 44, 171, 0.1);
+  border: 1px solid rgba(124, 184, 214, 0.5);
+  cursor: pointer;
+}
+
+.create-marker {
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  max-width: 300px;
+  height: 70px;
+  text-align: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1400;
+}
+
+.create-marker:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(177, 209, 182, 0.9);
+  border: 1px solid rgba(138, 250, 138, 0.7);
+  cursor: pointer;
+}
+
+.map {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  height: 100vh;
+  max-height: 100%;
+}
+
+.description {
+  line-height: 14px;
+  height: 30px;
+  width: 100%;
+  word-wrap: break-word;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 600px) {
+  .form-address {
+    height: 500px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .create-marker {
+    position: initial;
+    min-width: 100%;
+    margin: 0;
+  }
+  .map {
+    height: 100vh;
+    max-height: 91vh;
   }
 }
